@@ -1,13 +1,17 @@
 'use client';
 
-import { ARView, ARFaceMesh, ARAnchor } from "react-three-mind";
+import dynamic from 'next/dynamic';
+// import { ARView, ARFaceMesh, ARAnchor } from "react-three-mind";
 import { useGLTF } from "@react-three/drei";
 import { useRef } from "react";
 // import StaticAABB from "../public/Claveles_MarianaJU - Mariana JU.glb"
+const ARView = dynamic(() => import('react-three-mind').then((mod) => mod.ARView), { ssr: false });
+const ARAnchor = dynamic(() => import('react-three-mind').then((mod) => mod.ARAnchor), { ssr: false });
+
 
 export default function Home() {
 
-  const model = useGLTF ('./Azucenas_MarianaJU - Mariana JU.glb')
+  const model = useGLTF ('azucenas_mariana.glb')
   const modelRef = useRef();
 
   return (
